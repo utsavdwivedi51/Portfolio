@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Utsav Dwivedi — Portfolio</title>
+  <meta name="description" content="Utsav Dwivedi — Software Developer & Cybersecurity Enthusiast | Portfolio" />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <style>
+    /* ----------------- Reset & Base ----------------- */
+    :root{
+      --bg: #0f1724; --card: #0b1220; --muted:#9aa4b2; --accent:#6ee7b7; --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --glass-border: rgba(255,255,255,0.06);
+      --glass-shadow: 0 6px 18px rgba(2,6,23,0.6);
+      --max-w: 1000px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body,#app{height:100%}
+    body{
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(110,231,183,0.06), transparent 8%),
+                  radial-gradient(900px 400px at 90% 90%, rgba(110,231,183,0.03), transparent 8%),
+                  var(--bg);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:32px 20px;
+      display:flex;align-items:center;justify-content:center;
+    }
+
+    /* ----------------- Layout ----------------- */
+    .container{width:100%;max-width:var(--max-w);}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#6ee7b7, #3b82f6);display:flex;align-items:center;justify-content:center;font-weight:700;color:#042f22}
+    .name{font-size:18px;font-weight:600}
+    nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-weight:600}
+    nav a:hover{color:var(--accent)}
+
+    main{display:grid;grid-template-columns:360px 1fr;gap:24px}
+
+    /* ----------------- Sidebar ----------------- */
+    .card{background:linear-gradient(180deg,var(--glass),var(--glass-2));border:1px solid var(--glass-border);box-shadow:var(--glass-shadow);border-radius:14px;padding:20px}
+    .profile-pic{width:100%;border-radius:10px;overflow:hidden;height:250px;background:linear-gradient(180deg,#0b1220,#081021);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px}
+    .profile-pic img{width:100%;height:100%;object-fit:cover;display:block}
+    .contact-list{margin-top:14px;display:grid;gap:10px}
+    .chip{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-size:14px}
+    .chip a{color:var(--accent);text-decoration:none;font-weight:700}
+
+    /* ----------------- Content ----------------- */
+    .hero{background:transparent;padding:20px;border-radius:12px}
+    .headline{font-size:28px;font-weight:700;margin-bottom:8px}
+    .subhead{color:var(--muted);margin-bottom:16px}
+    .cta{display:flex;gap:12px}
+    .btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);cursor:pointer;font-weight:700}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#60a5fa);color:#042f22;border:none}
+
+    section{margin-bottom:18px}
+    h3{font-size:16px;margin-bottom:10px}
+    p.lead{color:var(--muted)}
+
+    /* Projects grid */
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .project{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.03);cursor:pointer;transition:transform .28s ease, box-shadow .28s ease}
+    .project:hover{transform:translateY(-8px);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    .project h4{margin-bottom:6px}
+    .project p{color:var(--muted);font-size:13px}
+
+    /* Skills */
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-weight:600}
+
+    /* timeline */
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .tl-item{padding:12px;border-radius:10px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.03)}
+    .muted{color:var(--muted);font-size:13px}
+
+    /* Contact form */
+    form{display:grid;gap:10px}
+    input, textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:inherit}
+    textarea{min-height:100px}
+
+    footer{margin-top:14px;color:var(--muted);font-size:13px}
+
+    /* responsive */
+    @media(max-width:980px){main{grid-template-columns:1fr;}}
+
+    /* tiny animated accent */
+    .accent-wave{height:6px;width:90px;background:linear-gradient(90deg,var(--accent),#60a5fa);border-radius:999px;margin:12px 0;opacity:0.95}
+
+    /* smooth show animations */
+    .fade-in{animation:fadeIn .6s ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    .profile-pic {
+  width: 180px;              
+  height: 180px;
+  border-radius: 50%;      
+  object-fit: cover;         
+  border: 4px solid #0078ff;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.profile-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 120, 255, 0.4);
+}
+
+  </style>
+</head>
+<body>
+  <div class="container" id="app">
+    <header class="fade-in">
+      <div class="brand">
+        <div class="logo">UD</div>
+        <div>
+          <div class="name">Utsav Dwivedi</div>
+          <div class="muted" style="font-size:12px">Software Developer • Cybersecurity Enthusiast</div>
+        </div>
+      </div>
+      <nav class="muted">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      
+      <aside class="card fade-in">
+        <div class="profile-pic">
+          
+          <img src="https://media.licdn.com/dms/image/v2/D5603AQGUQg9qZ5t3kQ/profile-displayphoto-crop_800_800/B56Zn4QVE3JYAI-/0/1760806656341?e=1762387200&v=beta&t=y2UniWxPgI-TsJYvaMO6X7K-0qnHw-pyD3zHMribH-c" alt="Utsav Dwivedi">
+        </div>
+
+        <div style="margin-top:14px;">
+          <h3>Contact</h3>
+          <div class="contact-list">
+            <div class="chip"><div>Location</div><div class="muted">Varanasi, India</div></div>
+            <div class="chip"><div>Email</div><div><a href="mailto:utsavdwivedi51@gmail.com">utsavdwived51@gmail.com</a></div></div>
+            <div class="chip"><div>Phone</div><div class="muted">+91 6394085765</div></div>
+            <div class="chip"><div>GitHub</div><div><a href="https://github.com/utsavdwivedi51" target="_blank">https://github.com/utsavdwivedi51</a></div></div>
+            <div class="chip"><div>Portfolio</div><div><a href="#">utsavdwivedi51.dev</a></div></div>
+          </div>
+        </div>
+
+        <div style="margin-top:16px">
+          <h3>Quick Skills</h3>
+          <div class="skills" style="margin-top:8px">
+            <div class="skill">Python</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">HTML & CSS</div>
+            <div class="skill">Cybersecurity</div>
+            <div class="skill">React (basic)</div>
+            <div class="skill">Git</div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px">
+          <h3>Education</h3>
+          <div class="muted">B.Tech in Computer Science & Engineering — (2022–2026)</div>
+          <div style="margin-top:8px"><small class="muted">Dr. APJ Abdul Kalam Technical University, Lucknow</small></div>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <section>
+        <div class="hero card fade-in">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+            <div>
+              <div class="headline">Hi — I'm <span style="color:var(--accent)">Utsav Dwivedi</span></div>
+              <div class="subhead">Software Developer & Cybersecurity Enthusiast. I build web apps and tools that solve real problems and help people learn.</div>
+              <div class="accent-wave"></div>
+              <div class="cta" style="margin-top:10px">
+                <button class="btn primary" onclick="downloadResume()">Download Resume</button>
+                <a class="btn" href="#projects">View Projects</a>
+              </div>
+            </div>
+            <div style="min-width:180px;text-align:right">
+              <div class="muted">Open to internships & projects</div>
+              <div style="margin-top:12px"><a class="btn" href="https://github.com/utsavdwivedi51" target="_blank">View GitHub</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="about" class="card fade-in" style="margin-top:14px">
+          <h3>About</h3>
+          <p class="lead">I am a final-year B.Tech CSE student passionate about software development, cybersecurity, and building polished web experiences. I enjoy learning new technologies and contributing to open-source projects. My hands-on projects include a To-Do App, Whatsapp-like messenger, and this portfolio website.</p>
+        </div>
+
+        <div id="projects" class="card fade-in" style="margin-top:14px">
+          <h3>Selected Projects</h3>
+          <div class="projects" style="margin-top:12px">
+            <div class="project" onclick="openProject('todo')">
+              <h4>To‑Do App</h4>
+              <div class="muted">A minimal progressive To‑Do app with localStorage and responsive UI. Built with HTML/CSS/JS.</div>
+            </div>
+
+            <div class="project" onclick="openProject('messenger')">
+              <h4>Messenger Clone</h4>
+              <div class="muted">A front-end messenger clone with chat UI, message input, and theme toggle. Used CSS animations and JS state management.</div>
+            </div>
+
+            <div class="project" onclick="openProject('portfolio')">
+              <h4>Portfolio Website</h4>
+              <div class="muted">This single-file portfolio (HTML/CSS/JS) designed for GitHub Pages deployment and fast performance.</div>
+            </div>
+
+            <div class="project" onclick="openProject('cyber')">
+              <h4>Attendance ERP</h4>
+              <div class="muted">An attendance ERP for students and teachers at an institution.</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="skills" class="card fade-in" style="margin-top:14px">
+          <h3>Skills & Tools</h3>
+          <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:8px">
+            <div style="flex:1;min-width:180px">
+              <h4 style="margin-bottom:8px">Languages</h4>
+              <div class="skills"><div class="skill">Python</div><div class="skill">C</div><div class="skill">JavaScript</div></div>
+            </div>
+            <div style="flex:1;min-width:180px">
+              <h4 style="margin-bottom:8px">Web</h4>
+              <div class="skills"><div class="skill">HTML</div><div class="skill">CSS</div><div class="skill">React (basic)</div></div>
+            </div>
+            <div style="flex:1;min-width:180px">
+              <h4 style="margin-bottom:8px">Security</h4>
+              <div class="skills"><div class="skill">Networking</div><div class="skill">Ethical Hacking</div><div class="skill">OSINT</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card fade-in" style="margin-top:14px">
+          <h3>Experience & Projects Timeline</h3>
+          <div class="timeline" style="margin-top:8px">
+            <div class="tl-item">
+              <div style="display:flex;justify-content:space-between"><strong>Personal Projects</strong><span class="muted">2023 — Present</span></div>
+              <div class="muted">Built multiple web projects and published code on GitHub. Focus on clean UI, accessibility and performance.</div>
+            </div>
+            <div class="tl-item">
+              <div style="display:flex;justify-content:space-between"><strong>Open Source Contributions</strong><span class="muted">2024</span></div>
+              <div class="muted">Small contributions to beginner-friendly repos and documentation improvements.</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="contact" class="card fade-in" style="margin-top:14px">
+          <h3>Contact</h3>
+          <p class="muted">Want to collaborate? Drop a message — I usually reply within a few days.</p>
+          <form onsubmit="submitContact(event)">
+            <input id="name" placeholder="Your name" required />
+            <input id="email" placeholder="Your email" type="email" required />
+            <textarea id="message" placeholder="Your message" required></textarea>
+            <div style="display:flex;gap:10px">
+              <button type="submit" class="btn primary">Send Message</button>
+              <button type="button" class="btn" onclick="contactCopy()">Copy Email</button>
+            </div>
+          </form>
+        </div>
+
+        <footer class="muted">© <span id="year"></span> Utsav Dwivedi — Built with ❤️ • Hosted on GitHub Pages</footer>
+
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Small UX helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function downloadResume(){
+      const url = 'https://drive.google.com/file/d/14L79Ew1DSYiFgHousocmBcgU0mczNagO/view?usp=drivesdk';
+      window.open(url,'_blank');
+    }
+
+    function openProject(projectName) {
+  let url = '';
+
+  switch (projectName) {
+    case 'messenger':
+      url = 'https://utsavdwivedi51.github.io/Messenger-clone/';
+      break;
+
+    case 'todo':
+      url = 'https://utsavdwivedi51.github.io/Todo/';
+      break;
+
+    case 'portfolio':
+      url = 'https://utsavdwivedi51.github.io/MyPortfolio-site/';
+      break;
+
+    case 'cyber':
+      url = 'https://utsavdwivedi51.github.io/Attendance-ERP/';
+      break;
+
+    default:
+      alert('Project link not found!');
+      return;
+  }
+
+  window.open(url, '_blank');
+}
+
+   
+    
+   function submitContact(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim(); 
+      const msg = document.getElementById('message').value.trim();
+      // For demo this will just copy to clipboard and show a toast
+      const payload = `Name: ${name}\nEmail: ${email}\nMessage: ${msg}`;
+      navigator.clipboard.writeText(payload).then(()=>{
+        alert('Your message sent successfully.');
+        document.querySelector('form').reset();
+      }).catch(()=>{
+        alert('Could not copy. Please contact via email: utsavdwivedi51@gmail.com');
+      });
+    }
+
+    function contactCopy(){
+      navigator.clipboard.writeText('utsavdwivedi51@gmail.com').then(()=>{
+        alert('Email copied to clipboard');
+      });
+    } 
+</script>
+</body>
+</html>
