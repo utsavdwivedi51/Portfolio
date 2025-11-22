@@ -25,15 +25,3 @@ Built to serve as my professional digital identity and a central place to view m
 | Frontend - HTML5, CSS3, JavaScript |
 | UI - Custom CSS  |
 | Tools - VS Code, Git, GitHub |
-
-## Folder Structure
-
-bash
-Portfolio/
-│── index.html
-│── style.css
-│── script.js
-│── assets/
-│   ├── images/
-│   └── icons/
-|   └── project's links/
