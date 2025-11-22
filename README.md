@@ -1,4 +1,4 @@
-# 🌐 Personal Portfolio — Utsav Dwivedi
+# Personal Portfolio — Utsav Dwivedi
 
 This is my personal portfolio website showcasing my skills, projects, experience, and achievements.  
 Built to serve as my professional digital identity and a central place to view my work.
@@ -6,9 +6,7 @@ Built to serve as my professional digital identity and a central place to view m
  Live Portfolio: https://utsavdwivedi51.github.io/Portfolio/  
  GitHub Repo: https://github.com/utsavdwivedi51/Portfolio
 
----
-
-## 📸 Preview
+## Preview
  <img width="1343" height="874" alt="image" src="https://github.com/user-attachments/assets/3cab743b-070d-48b7-adba-e229c2942617" />
  
 ## Features
@@ -22,16 +20,11 @@ Built to serve as my professional digital identity and a central place to view m
   - Contact Form / Social Handles
 - Clean typography & animated UI components
 
----
-
-## 🛠 Tech Stack
-
+## Tech Stack
 
 | Frontend - HTML5, CSS3, JavaScript |
 | UI - Custom CSS  |
 | Tools - VS Code, Git, GitHub |
-
----
 
 ## Folder Structure
 
