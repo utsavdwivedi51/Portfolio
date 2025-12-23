@@ -1,4 +1,4 @@
-# Personal Portfolio — Utsav Dwivedi
+# Personal Portfolio - Utsav Dwivedi
 
 This is my personal portfolio website showcasing my skills, projects, experience, and achievements.  
 Built to serve as my professional digital identity and a central place to view my work.
