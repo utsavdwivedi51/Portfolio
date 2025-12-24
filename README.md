@@ -6,9 +6,6 @@ Built to serve as my professional digital identity and a central place to view m
  Live Portfolio: https://utsavdwivedi51.github.io/Portfolio/  
  GitHub Repo: https://github.com/utsavdwivedi51/Portfolio
 
-## Preview
- <img width="1343" height="874" alt="image" src="https://github.com/user-attachments/assets/3cab743b-070d-48b7-adba-e229c2942617" />
- 
 ## Features
 
 - Fully responsive modern UI
