@@ -1,352 +1,731 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Utsav Dwivedi - Portfolio</title>
-  <meta name="description" content="Utsav Dwivedi - Software Developer & Cybersecurity Enthusiast | Portfolio" />
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utsav Dwivedi | Software Developer</title>
   <style>
-    /* ----------------- Reset & Base ----------------- */
-    :root{
-      --bg: #0f1724; --card: #0b1220; --muted:#9aa4b2; --accent:#6ee7b7; --glass: rgba(255,255,255,0.04);
-      --glass-2: rgba(255,255,255,0.02);
-      --glass-border: rgba(255,255,255,0.06);
-      --glass-shadow: 0 6px 18px rgba(2,6,23,0.6);
-      --max-w: 1000px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body,#app{height:100%}
-    body{
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(110,231,183,0.06), transparent 8%),
-                  radial-gradient(900px 400px at 90% 90%, rgba(110,231,183,0.03), transparent 8%),
-                  var(--bg);
-      color:#e6eef6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      padding:32px 20px;
-      display:flex;align-items:center;justify-content:center;
+    
+    :root {
+      --bg-primary: #0a0e27;
+      --bg-secondary: #131a3a;
+      --accent: #00f0ff;
+      --accent-glow: rgba(0, 240, 255, 0.3);
+      --text-primary: #e0e7ff;
+      --text-muted: #8b92b8;
+      --card-bg: rgba(19, 26, 58, 0.6);
+      --border: rgba(0, 240, 255, 0.2);
     }
-
-    /* ----------------- Layout ----------------- */
-    .container{width:100%;max-width:var(--max-w);}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#6ee7b7, #3b82f6);display:flex;align-items:center;justify-content:center;font-weight:700;color:#042f22}
-    .name{font-size:18px;font-weight:600}
-    nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-weight:600}
-    nav a:hover{color:var(--accent)}
-
-    main{display:grid;grid-template-columns:360px 1fr;gap:24px}
-
-    /* ----------------- Sidebar ----------------- */
-    .card{background:linear-gradient(180deg,var(--glass),var(--glass-2));border:1px solid var(--glass-border);box-shadow:var(--glass-shadow);border-radius:14px;padding:20px}
-    .profile-pic{width:100%;border-radius:10px;overflow:hidden;height:250px;background:linear-gradient(180deg,#0b1220,#081021);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px}
-    .profile-pic img{width:100%;height:100%;object-fit:cover;display:block}
-    .contact-list{margin-top:14px;display:grid;gap:10px}
-    .chip{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-size:14px}
-    .chip a{color:var(--accent);text-decoration:none;font-weight:700}
-
-    /* ----------------- Content ----------------- */
-    .hero{background:transparent;padding:20px;border-radius:12px}
-    .headline{font-size:28px;font-weight:700;margin-bottom:8px}
-    .subhead{color:var(--muted);margin-bottom:16px}
-    .cta{display:flex;gap:12px}
-    .btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);cursor:pointer;font-weight:700}
-    .btn.primary{background:linear-gradient(90deg,var(--accent),#60a5fa);color:#042f22;border:none}
-
-    section{margin-bottom:18px}
-    h3{font-size:16px;margin-bottom:10px}
-    p.lead{color:var(--muted)}
-
-    /* Projects grid */
-    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-    .project{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.03);cursor:pointer;transition:transform .28s ease, box-shadow .28s ease}
-    .project:hover{transform:translateY(-8px);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
-    .project h4{margin-bottom:6px}
-    .project p{color:var(--muted);font-size:13px}
-
+    
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 240, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(138, 43, 226, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .grid-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 0;
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), #8a2be2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px var(--accent-glow);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      min-height: 80vh;
+      padding: 60px 0;
+    }
+    
+    .hero-content h1 {
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    
+    .hero-content .accent-text {
+      background: linear-gradient(135deg, var(--accent), #8a2be2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-content p {
+      font-size: 20px;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .btn {
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      font-size: 16px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #8a2be2);
+      color: #000;
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px var(--accent-glow);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--accent);
+      color: #000;
+    }
+    
+    /* Profile Card */
+    .profile-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      animation: rotate 10s linear infinite;
+      opacity: 0.1;
+    }
+    
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin: 0 auto 30px;
+      border: 4px solid var(--accent);
+      box-shadow: 0 0 40px var(--accent-glow);
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .profile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .status {
+      background: rgba(0, 240, 100, 0.2);
+      color: #00f064;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      display: inline-block;
+      margin-bottom: 30px;
+      border: 1px solid #00f064;
+    }
+    
+    .status::before {
+      content: '●';
+      margin-right: 8px;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .social-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 20px;
+    }
+    
+    .social-btn:hover {
+      background: var(--accent);
+      color: #000;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px var(--accent-glow);
+    }
+    
+    /* Section Styles */
+    section {
+      padding: 100px 0;
+    }
+    
+    .section-title {
+      font-size: 48px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), #8a2be2);
+      margin: 20px auto 0;
+      border-radius: 2px;
+    }
+    
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    
+    .project-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      transition: all 0.4s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--accent-glow), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 60px var(--accent-glow);
+    }
+    
+    .project-card:hover::before {
+      opacity: 1;
+    }
+    
+    .project-card h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .project-card p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    
     /* Skills */
-    .skills{display:flex;flex-wrap:wrap;gap:8px}
-    .skill{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-weight:600}
-
-    /* timeline */
-    .timeline{display:flex;flex-direction:column;gap:12px}
-    .tl-item{padding:12px;border-radius:10px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.03)}
-    .muted{color:var(--muted);font-size:13px}
-
-    /* Contact form */
-    form{display:grid;gap:10px}
-    input, textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:inherit}
-    textarea{min-height:100px}
-
-    footer{margin-top:14px;color:var(--muted);font-size:13px}
-
-    /* responsive */
-    @media(max-width:980px){main{grid-template-columns:1fr;}}
-
-    /* tiny animated accent */
-    .accent-wave{height:6px;width:90px;background:linear-gradient(90deg,var(--accent),#60a5fa);border-radius:999px;margin:12px 0;opacity:0.95}
-
-    /* smooth show animations */
-    .fade-in{animation:fadeIn .6s ease both}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-    .profile-pic {
-  width: 180px;              
-  height: 180px;
-  border-radius: 50%;      
-  object-fit: cover;         
-  border: 4px solid #0078ff;
-  margin-bottom: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.profile-pic:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 120, 255, 0.4);
-}
-
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    
+    .skill-category {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+    }
+    
+    .skill-category h3 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .skill-tag {
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+    
+    .skill-tag:hover {
+      background: var(--accent);
+      color: #000;
+      transform: scale(1.05);
+    }
+    
+    /* Contact Form */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 50px;
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px 20px;
+      background: rgba(0, 240, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+    
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+    
+    /* Responsive */
+    @media (max-width: 968px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .hero-content h1 {
+        font-size: 48px;
+      }
+      
+      .cta-buttons {
+        justify-content: center;
+      }
+      
+      .nav-links {
+        gap: 20px;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .hero-content h1 {
+        font-size: 36px;
+      }
+      
+      .section-title {
+        font-size: 32px;
+      }
+      
+      .contact-form {
+        padding: 30px;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container" id="app">
-    <header class="fade-in">
-      <div class="brand">
-        <div class="logo">UD</div>
-        <div>
-          <div class="name">Utsav Dwivedi</div>
-          <div class="muted" style="font-size:12px">Software Developer • Cybersecurity Enthusiast</div>
+  <div class="grid-bg"></div>
+  
+  <div class="container">
+    <nav>
+      <div class="logo">UTSAV.DEV</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Hi, I'm <span class="accent-text">Utsav Dwivedi</span></h1>
+        <p>Software Developer & Cybersecurity Enthusiast crafting digital experiences that solve real-world problems.</p>
+        <div class="cta-buttons">
+          <button class="btn btn-primary" onclick="downloadResume()">Download Resume</button>
+          <a href="#projects" class="btn btn-secondary">View Projects</a>
         </div>
       </div>
-      <nav class="muted">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <main>
       
-      <aside class="card fade-in">
-        <div class="profile-pic">
+      <div class="profile-card">
+        <div class="profile-img">
+          <img src="./profile.jpeg" alt="Utsav Dwivedi">
+        </div>
+        <div style="text-align: center;">
+          <div class="status">● Available for Work</div>
+          <h3 style="margin-bottom: 10px;">Utsav Dwivedi</h3>
+          <p style="color: var(--text-muted); margin-bottom: 20px;">B.Tech CSE | Kashi Institute of Technology</p>
+          <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 14px;">Varanasi, India</p>
           
-          <img src="./profile.jpeg" alt="Utsav Dwivedi" loading="lazy">
-
-        </div>
-
-        <div style="margin-top:14px;">
-          <h3>Contact</h3>
-          <div class="contact-list">
-            <div class="chip"><div>Location</div><div class="muted">Varanasi, India</div></div>
-            <div class="chip"><div>Email</div><div><a href="mailto:utsavdwivedi51@gmail.com">utsavdwived51@gmail.com</a></div></div>
-            <div class="chip"><div>Phone</div><div class="muted">+91 6394085765</div></div>
-            <div class="chip"><div>GitHub</div><div><a href="https://github.com/utsavdwivedi51" target="_blank">github.com/utsavdwivedi51</a></div></div>
-            <div class="chip"><div>Linkedin</div><div><a href="https://www.linkedin.com/in/utsav-dwivedi51/" target="_blank">linkedin.com/in/utsav-dwivedi51</a></div></div>
-            <div class="chip"><div>Blog</div><div><a href="https://utsavdwivedi51.blogspot.com/2025/11/my-internship-journey-with-oasis.html" target="_blank">utsavdwivedi51.blogspot.com</a></div></div>
-            <div class="chip"><div>LeetCode</div><div><a href="https://leetcode.com/u/utsav_dwivedi/" target="_blank">leetcode.com/u/utsav_dwivedi/</a></div></div>
-            <div class="chip"><div>Codeforces</div><div><a href="https://codeforces.com/submissions/utsavdwivedi51" target="_blank">codeforces.com/utsavdwivedi51</a></div></div>
-            <div class="chip"><div>X(Twitter)</div><div><a href="https://x.com/utsav_dwivedi51" target="_blank">x.com/utsav_dwivedi51</a></div></div>
-            <div class="chip"><div>Instagram</div><div><a href="https://www.instagram.com/utsav_dwi_vedi" target="_blank">instagram.com/utsav_dwi_vedi</a></div></div>
+          <div class="social-links">
+            <a href="https://github.com/utsavdwivedi51" target="_blank" class="social-btn" title="GitHub">G</a>
+            <a href="https://www.linkedin.com/in/utsav-dwivedi51/" target="_blank" class="social-btn" title="LinkedIn">in</a>
+            <a href="https://leetcode.com/u/utsav_dwivedi/" target="_blank" class="social-btn" title="LeetCode">LC</a>
+            <a href="https://x.com/utsav_dwivedi51" target="_blank" class="social-btn" title="Twitter">𝕏</a>
+            <a href="mailto:utsavdwivedi51@gmail.com" class="social-btn" title="Email">@</a>
+            <a href="https://www.instagram.com/utsav_dwi_vedi" target="_blank" class="social-btn" title="Instagram">IG</a>
           </div>
         </div>
-
-        <div style="margin-top:16px">
-          <h3>Quick Skills</h3>
-          <div class="skills" style="margin-top:8px">
-            <div class="skill">Python</div>
-            <div class="skill">JavaScript</div>
-            <div class="skill">HTML & CSS</div>
-            <div class="skill">React</div>
-            <div class="skill">Github</div>
-          </div>
-        </div>
-
-        <div style="margin-top:18px">
-          <h3>Education</h3>
-          <div class="muted">B.Tech in Computer Science & Engineering - (2022-2026)</div>
-          <div style="margin-top:8px"><small class="muted">Kashi Institute of Technology, Varanasi</small></div>
-        </div>
-      </aside>
-
-      <!-- Main content -->
-      <section>
-        <div class="hero card fade-in">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
-            <div>
-              <div class="headline">Hi - I'm <span style="color:var(--accent)">Utsav Dwivedi</span></div>
-              <div class="subhead">Software, Web Developer & Cybersecurity Enthusiast. I build web apps and tools that solve real problems and help people learn.</div>
-              <div class="accent-wave"></div>
-              <div class="cta" style="margin-top:10px">
-                <button class="btn primary" onclick="downloadResume()">Download Resume</button>
-                <a class="btn" href="#projects">View Projects</a>
-              </div>
-            </div>
-            <div style="min-width:180px;text-align:right">
-              <div class="muted">Open to Jobs & Projects</div>
-              <div style="margin-top:12px"><a class="btn" href="https://github.com/utsavdwivedi51" target="_blank">View GitHub</a></div>
-            </div>
-          </div>
-        </div>
-
-        <div id="about" class="card fade-in" style="margin-top:14px">
-          <h3>About</h3>
-          <p class="lead">I am a final-year B.Tech CSE student passionate about software development, cybersecurity, and building polished web experiences. I enjoy learning new technologies and contributing to open-source projects. My hands-on projects include a Attendance ERP System, Clone messenger, todo web app, temperature converter website, RailEasy and this portfolio website.</p>
-        </div>
-
-        <div id="projects" class="card fade-in" style="margin-top:14px">
-          <h3>Selected Projects</h3>
-          <div class="projects" style="margin-top:12px">
-            <div class="project" onclick="openProject('cyber')">
-              <h4>Attendance ERP</h4>
-              <div class="muted">(My biggest project) Created an intuitive user interface with HTML, CSS, and JavaScript that dynamically renders data based on user role, improving usability.Implemented a secure login system, differentiating UI and permissions for Teachers (add/delete records) and Students (view-only dashboard). Click for live demo.</div>
-            </div>
-
-            <div class="project" onclick="openProject('messenger')">
-              <h4>Messenger Clone</h4>
-              <div class="muted">A front-end messenger clone with chat UI, message input, and theme toggle. Used CSS animations and JS state management. Click for live demo.</div>
-            </div>
-
-            <div class="project" onclick="openProject('portfolio')">
-              <h4>Temperature-Converter</h4>
-              <div class="muted">A simple and interactive temperature conversion web app that allows users to convert values between Celsius, Fahrenheit, and Kelvin. Designed with a clean UI inspired by mobile app layouts. Click for live demo.</div>
-            </div>
-            <div class="project" onclick="openProject('todo')">
-              <h4>To‑Do App</h4>
-              <div class="muted">Engineered a dynamic To-Do application using JavaScript ES6+, implementing CRUD operations for task management. Architected a data persistence layer using the browser's LocalStorage API, ensuring user data persists across sessions without a backend. Delivered a fully functional, client-side application with a responsive UI that efficiently manages daily tasks. Click for live demo</div>
-            </div>
-          </div>
-        </div>
-
-        <div id="skills" class="card fade-in" style="margin-top:14px">
-          <h3>Skills & Tools</h3>
-          <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:8px">
-            <div style="flex:1;min-width:180px">
-              <h4 style="margin-bottom:8px">Languages</h4>
-              <div class="skills"><div class="skill">Python</div><div class="skill">C</div><div class="skill">JavaScript</div></div>
-            </div>
-            <div style="flex:1;min-width:180px">
-              <h4 style="margin-bottom:8px">Web</h4>
-              <div class="skills"><div class="skill">HTML</div><div class="skill">CSS</div><div class="skill">React</div></div>
-            </div>
-            <div style="flex:1;min-width:180px">
-              <h4 style="margin-bottom:8px">Security</h4>
-              <div class="skills"><div class="skill">Networking</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card fade-in" style="margin-top:14px">
-          <h3>Experience & Projects Timeline</h3>
-          <div class="timeline" style="margin-top:8px">
-            <div class="tl-item">
-              <div style="display:flex;justify-content:space-between"><strong>Personal Projects</strong><span class="muted">2023 - Present</span></div>
-              <div class="muted">Built multiple web projects and published code on GitHub. Focus on clean UI, accessibility and performance.</div>
-            </div>
-            <div class="tl-item">
-              <div style="display:flex;justify-content:space-between"><strong>Open Source Contributions</strong><span class="muted">2024</span></div>
-              <div class="muted">Small contributions to beginner-friendly repos and documentation improvements.</div>
-            </div>
-          </div>
-        </div>
-
-      <div id="contact" class="card fade-in" style="margin-top:14px">
-  <h3>Contact</h3>
-  <p class="muted">Want to collaborate? Drop a message - I usually reply within a few days.</p>
-  <form action="https://formspree.io/f/xpqqarjk" method="POST" onsubmit="handleSubmit(event)">
-    <input id="name" name="name" placeholder="Your name" required />
-    <input id="email" name="email" placeholder="Your email" type="email" required />
-    <textarea id="message" name="message" placeholder="Your message" required></textarea>
-    <div style="display:flex;gap:10px">
-      <button type="submit" class="btn primary">Send Message</button>
-      <button type="button" class="btn" onclick="contactCopy()">Copy Email</button>
-    </div>
-  </form>
-</div>
-
-        <footer class="muted">© <span id="year"></span> Utsav Dwivedi • Hosted on GitHub Pages</footer>
-
-      </section>
-    </main>
-  </div>
-
-  <script>
-    // Small UX helpers
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    function downloadResume(){
-      const url = 'https://drive.google.com/file/d/1At4Gg6z7_SceEiF8tOF4Y2YKeAPpo1RA/view?usp=drivesdk';
-      window.open(url,'_blank');
-    }
-
-    function openProject(projectName) {
-  let url = '';
-
-  switch (projectName) {
-    case 'messenger':
-      url = 'https://utsavdwivedi51.github.io/Messenger-clone/';
-      break;
-
-    case 'todo':
-      url = 'https://utsavdwivedi51.github.io/Todo/';
-      break;
-
-    case 'portfolio':
-      url = 'https://utsavdwivedi51.github.io/Temperature-Converter-Website/';
-      break;
-
-    case 'cyber':
-      url = 'https://utsavdwivedi51.github.io/Attendance-ERP/';
-      break;
-
-    default:
-      alert('Project link not found!');
-      return;
-  }
-
-  window.open(url, '_blank');
-}
-
-    async function handleSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalText = submitBtn.textContent;
-  
-  // Show loading state
-  submitBtn.textContent = 'Sending...';
-  submitBtn.disabled = true;
-  
-  try {
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: new FormData(form),
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
+      </div>
+    </section>
     
-    if (response.ok) {
-      alert('✅ Message sent successfully! I\'ll get back to you soon.');
-      form.reset();
-    } else {
-      throw new Error('Failed to send');
+    <section id="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card" onclick="openProject('cyber')">
+          <h3>Attendance ERP System</h3>
+          <p>My biggest project featuring an intuitive interface with role-based access control. Teachers can manage records while students have a view-only dashboard. Built with HTML, CSS, and JavaScript for dynamic data rendering.</p>
+        </div>
+        
+        <div class="project-card" onclick="openProject('messenger')">
+          <h3>Messenger Clone</h3>
+          <p>A sleek front-end messenger clone featuring modern chat UI, message input system, and theme toggle. Implements CSS animations and JavaScript state management for smooth user experience.</p>
+        </div>
+        
+        <div class="project-card" onclick="openProject('portfolio')">
+          <h3>Temperature Converter</h3>
+          <p>Interactive temperature conversion web app supporting Celsius, Fahrenheit, and Kelvin. Features a clean, mobile-inspired UI with instant conversions and responsive design.</p>
+        </div>
+        
+        <div class="project-card" onclick="openProject('todo')">
+          <h3>To-Do Application</h3>
+          <p>Dynamic task management app engineered with JavaScript ES6+. Features full CRUD operations, LocalStorage persistence, and a responsive UI for efficient daily task management.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section id="skills">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3>Languages</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">C</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Web Technologies</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Responsive Design</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Tools & Platforms</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">VS Code</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Cybersecurity</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Networking</span>
+            <span class="skill-tag">Security Fundamentals</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="contact">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-form">
+        <form action="https://formspree.io/f/xpqqarjk" method="POST" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+        </form>
+      </div>
+    </section>
+    
+    <footer>
+      <p>© <span id="year"></span> Utsav Dwivedi • Crafted with passion</p>
+    </footer>
+  </div>
+  
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    function downloadResume() {
+      const url = 'https://drive.google.com/file/d/1At4Gg6z7_SceEiF8tOF4Y2YKeAPpo1RA/view?usp=drivesdk';
+      window.open(url, '_blank');
     }
-  } catch (error) {
-    alert('❌ Could not send message. Please email me directly at utsavdwivedi51@gmail.com');
-  } finally {
-    // Reset button state
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
-  }
-}
-
-function contactCopy(){
-  navigator.clipboard.writeText('utsavdwivedi51@gmail.com').then(()=>{
-    alert('📧 Email copied to clipboard');
-  });
-}
-</script>
+    
+    function openProject(projectName) {
+      let url = '';
+      
+      switch (projectName) {
+        case 'messenger':
+          url = 'https://utsavdwivedi51.github.io/Messenger-clone/';
+          break;
+        case 'todo':
+          url = 'https://utsavdwivedi51.github.io/Todo/';
+          break;
+        case 'portfolio':
+          url = 'https://utsavdwivedi51.github.io/Temperature-Converter-Website/';
+          break;
+        case 'cyber':
+          url = 'https://utsavdwivedi51.github.io/Attendance-ERP/';
+          break;
+        default:
+          alert('Project link not found!');
+          return;
+      }
+      
+      window.open(url, '_blank');
+    }
+    
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          alert('✅ Message sent successfully! I\'ll get back to you soon.');
+          form.reset();
+        } else {
+          throw new Error('Failed to send');
+        }
+      } catch (error) {
+        alert('❌ Could not send message. Please email me directly at utsavdwivedi51@gmail.com');
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    }
+    
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
