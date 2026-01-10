@@ -251,19 +251,19 @@
           </div>
         </div>
 
-        <div id="contact" class="card fade-in" style="margin-top:14px">
-          <h3>Contact</h3>
-          <p class="muted">Want to collaborate? Drop a message - I usually reply within a few days.</p>
-          <form onsubmit="submitContact(event)">
-            <input id="name" placeholder="Your name" required />
-            <input id="email" placeholder="Your email" type="email" required />
-            <textarea id="message" placeholder="Your message" required></textarea>
-            <div style="display:flex;gap:10px">
-              <button type="submit" class="btn primary">Send Message</button>
-              <button type="button" class="btn" onclick="contactCopy()">Copy Email</button>
-            </div>
-          </form>
-        </div>
+      <div id="contact" class="card fade-in" style="margin-top:14px">
+  <h3>Contact</h3>
+  <p class="muted">Want to collaborate? Drop a message - I usually reply within a few days.</p>
+  <form action="https://formspree.io/f/xpqqarjk" method="POST" onsubmit="handleSubmit(event)">
+    <input id="name" name="name" placeholder="Your name" required />
+    <input id="email" name="email" placeholder="Your email" type="email" required />
+    <textarea id="message" name="message" placeholder="Your message" required></textarea>
+    <div style="display:flex;gap:10px">
+      <button type="submit" class="btn primary">Send Message</button>
+      <button type="button" class="btn" onclick="contactCopy()">Copy Email</button>
+    </div>
+  </form>
+</div>
 
         <footer class="muted">© <span id="year"></span> Utsav Dwivedi • Hosted on GitHub Pages</footer>
 
@@ -308,28 +308,45 @@
   window.open(url, '_blank');
 }
 
-   
+    async function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalText = submitBtn.textContent;
+  
+  // Show loading state
+  submitBtn.textContent = 'Sending...';
+  submitBtn.disabled = true;
+  
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
     
-   function submitContact(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim(); 
-      const msg = document.getElementById('message').value.trim();
-      // For demo this will just copy to clipboard and show a toast
-      const payload = `Name: ${name}\nEmail: ${email}\nMessage: ${msg}`;
-      navigator.clipboard.writeText(payload).then(()=>{
-        alert('Your message sent successfully.');
-        document.querySelector('form').reset();
-      }).catch(()=>{
-        alert('Could not copy. Please contact via email: utsavdwivedi51@gmail.com');
-      });
+    if (response.ok) {
+      alert('✅ Message sent successfully! I\'ll get back to you soon.');
+      form.reset();
+    } else {
+      throw new Error('Failed to send');
     }
+  } catch (error) {
+    alert('❌ Could not send message. Please email me directly at utsavdwivedi51@gmail.com');
+  } finally {
+    // Reset button state
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  }
+}
 
-    function contactCopy(){
-      navigator.clipboard.writeText('utsavdwivedi51@gmail.com').then(()=>{
-        alert('Email copied to clipboard');
-      });
-    } 
+function contactCopy(){
+  navigator.clipboard.writeText('utsavdwivedi51@gmail.com').then(()=>{
+    alert('📧 Email copied to clipboard');
+  });
+}
 </script>
 </body>
 </html>
