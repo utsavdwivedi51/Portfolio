@@ -560,11 +560,14 @@
     <section id="projects">
       <h2 class="section-title">Featured Projects</h2>
       <div class="projects-grid">
-        <div class="project-card" onclick="openProject('cyber')">
+        <div class="project-card" onclick="openProject('attendance erp')">
           <h3>Attendance ERP System</h3>
           <p>My biggest project featuring an intuitive interface with role-based access control. Teachers can manage records while students have a view-only dashboard. Built with HTML, CSS, and JavaScript for dynamic data rendering. Click for live demo</p>
         </div>
-        
+           <div class="project-card" onclick="openProject('resume analyzer')">
+             <h3>Resume Analyzer</h3>
+             <p>Built intelligent web app analyzing resume-job description alignment using keyword extraction and matching algorithms. Implemented PDF parsing to process multi-page resumes with 95\% accuracy. Click for live demo</p>
+
         <div class="project-card" onclick="openProject('messenger')">
           <h3>Messenger Clone</h3>
           <p>A sleek front-end messenger clone featuring modern chat UI, message input system, and theme toggle. Implements CSS animations and JavaScript state management for smooth user experience. Click for live demo</p>
@@ -673,9 +676,12 @@
         case 'portfolio':
           url = 'https://utsavdwivedi51.github.io/Temperature-Converter-Website/';
           break;
-        case 'cyber':
+        case 'attendance erp':
           url = 'https://utsavdwivedi51.github.io/Attendance-ERP/';
           break;
+        case 'resume analyzer':
+          url = 'https://utsavdwivedi51.github.io/AI-based-Resume-Analyzer/'
+          break; 
         default:
           alert('Project link not found!');
           return;
