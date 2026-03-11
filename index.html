@@ -564,6 +564,10 @@
           <h3>Attendance ERP System</h3>
           <p>My biggest project featuring an intuitive interface with role-based access control. Teachers can manage records while students have a view-only dashboard. Built with HTML, CSS, and JavaScript for dynamic data rendering. Click for live demo</p>
         </div>
+        <div class="project-card" onclick="openProject('cheapkart')">
+          <h3>Cheapkart</h3>
+          <p>Developed a Flipkart-inspired e-commerce marketplace with product catalog, shopping cart, user authentication, and order management functionality. Implemented a client-side database using local Storage with structured CRUD operations for users, cart, wishlist, and order history. Click for live demo</p>
+        </div>
         <div class="project-card" onclick="openProject('quicktalk')">
           <h3>QuickTalk</h3>
           <p>A modern AI assistant chatbot that gives real answers to the question asked by the users(or by uploading files) by fetching API key from the another chatbot and gives real answers after sometime(10-15 seconds). Click for live demo</p>
@@ -572,10 +576,6 @@
              <h3>Resume Analyzer</h3>
              <p>Built intelligent web app analyzing resume-job description alignment using keyword extraction and matching algorithms. Implemented PDF parsing to process multi-page resumes with 95% accuracy. Click for live demo</p>
            </div>
-        <div class="project-card" onclick="openProject('messenger')">
-          <h3>Messenger Clone</h3>
-          <p>A sleek front-end messenger clone featuring modern chat UI, message input system, and theme toggle. Implements CSS animations and JavaScript state management for smooth user experience. Click for live demo</p>
-        </div>
         
         <div class="project-card" onclick="openProject('portfolio')">
           <h3>Temperature Converter</h3>
@@ -606,7 +606,6 @@
           <div class="skill-tags">
             <span class="skill-tag">HTML5</span>
             <span class="skill-tag">CSS3</span>
-            <span class="skill-tag">React</span>
             <span class="skill-tag">Responsive Design</span>
           </div>
         </div>
@@ -663,7 +662,7 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     
     function downloadResume() {
-      const url = 'https://drive.google.com/file/d/1VdNoRi9DPj2r0jY9xP0fQKKmD7hNoWHz/view?usp=drivesdk';
+      const url = 'https://drive.google.com/file/d/1xwXPXLNb6G_xKvq6hHUMoi3XBopUHR3z/view?usp=drivesdk';
       window.open(url, '_blank');
     }
     
@@ -671,8 +670,8 @@
       let url = '';
       
       switch (projectName) {
-        case 'messenger':
-          url = 'https://utsavdwivedi51.github.io/Messenger-clone/';
+        case 'cheapkart':
+          url = 'https://utsavdwivedi51.github.io/CheapKart/';
           break;
         case 'todo':
           url = 'https://utsavdwivedi51.github.io/Todo/';
